@@ -165,3 +165,8 @@ footer .list-inline li a {
     height: 100%;
     object-fit: cover;
 }
+
+#map {
+  height: 350px;
+  width: 100%;
+}

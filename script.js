@@ -66,7 +66,29 @@
           });
       });
 
+      // map api 
 
+      const citySearch = document.getElementById("searchTerm");
+      const searchMap = document.getElementById("searchButton");
+      const map = L.map("map").setView([51.505, -0.09], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      searchMap.addEventListener("click", () => {
+        const city = citySearch.value;
+        const API_KEY = "c7a34fd37a9e46e89b140f5d67bf1b54";
+        const API_URL = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${API_KEY}`;
+        axios.get(API_URL)
+          .then(response => {
+            const lat = response.data.results[0].geometry.lat;
+            const lng = response.data.results[0].geometry.lng;
+            const latLng = [lat, lng];
+            map.setView(latLng, 13);
+            L.marker(latLng).addTo(map);
+          })
+          .catch(error => {
+            console.log(error)})})
 
 
 
