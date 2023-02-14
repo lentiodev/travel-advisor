@@ -90,6 +90,10 @@
           .catch(error => {
             console.log(error)})})
 
+            // city's activities api
+
+
+
 
 
 

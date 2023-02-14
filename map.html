@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Leaflet Map Routing with GPS Directions using OpenCageData</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://api.opencagedata.com/geocode/v1/leaflet.js"></script>
+    <style>
+      #map {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Initialize the map
+      var mymap = L.map('map').setView([37.7749, -122.4194], 13);
+      
+      // Add the OpenStreetMap tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+      }).addTo(mymap);
+
+      // Add the directions control
+      var directions = L.Routing.control({
+        router: L.Routing.opencage('c7a34fd37a9e46e89b140f5d67bf1b54'),
+        geocoder: L.Control.Geocoder.opencage('c7a34fd37a9e46e89b140f5d67bf1b54'),
+        routeWhileDragging: true,
+        showAlternatives: true,
+        autoRoute: true,
+        lineOptions: {
+          styles: [{color: 'blue', opacity: 1, weight: 5}]
+        },
+        fitSelectedRoutes: true,
+        createMarker: function(i, wp, n) {
+          return L.marker(wp.latLng, {
+            draggable: true,
+            icon: L.icon.glyph({
+              prefix: 'fa',
+              glyph: i === 0 ? 'fa-play-circle' : 'fa-stop-circle'
+            })
+          });
+        }
+      }).addTo(mymap);
+      
+      // Add GPS location control
+      L.control.locate({
+        setView: 'always',
+        markerStyle: {
+          weight: 1,
+          opacity: 0.8,
+          fillOpacity: 0.8,
+          radius: 6,
+          fillColor: '#1a1a1a'
+        },
+        icon: 'fa fa-location-arrow',
+        iconLoading: 'fa fa-spinner fa-spin',
+        drawCircle: true,
+        follow: true,
+        stopFollowingOnDrag: true,
+        remainActive: true,
+        onLocationError: function(err) {
+          alert(err.message);
+        }
+      }).addTo(mymap);
+    </script>
+  </body>
+</html>

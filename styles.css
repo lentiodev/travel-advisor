@@ -1,5 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Proxima+Nova:wght@400;700&display=swap');
+
 body {
+  font-family: 'Open Sans', sans-serif;
   background-color: #fff;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+/* Define button styles */
+.btn-signin {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #e81c4f;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.btn-signin:hover {
+  background-color: #c8003d;
+}
+.btn-signup {
+  background-color: #fff;
+  color: #e81c4f;
+  border: 2px solid #e81c4f;
+}
+.button.signup:hover {
+  background-color: #e81c4f;
+  color: #fff;
 }
 
 a {
@@ -7,22 +49,7 @@ a {
   color:inherit;
 }
 
-.btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
 
-.btn:hover {
-  background-color: #3e8e41;
-}
 
 .navbar {
   background-color: #fff;
@@ -132,7 +159,7 @@ a {
 /* footer section */
 
 footer {
-  background-color: #333;
+  background-color: #2d333f;
   color: #fff;
   padding: 10px 0;
 }
@@ -170,3 +197,45 @@ footer .list-inline li a {
   height: 350px;
   width: 100%;
 }
+
+ /* for city's activities CSS */
+
+      .card {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        max-width: 260px;
+      }
+      .card img {
+        border-radius: 5px 5px 0 0;
+        height: 160px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .card-body {
+        padding: 15px;
+      }
+      .card-title {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .card-text {
+        color: #8c8c8c;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      .btn {
+        border-radius: 0;
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      .btn-primary {
+        background-color: #d32f2f;
+        border-color: #d32f2f;
+      }
+      .btn-primary:hover {
+        background-color: #b71c1c;
+        border-color: #b71c1c;
+      }
